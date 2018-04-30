@@ -1,0 +1,78 @@
+.switch {
+    position: relative;
+
+    input[type="checkbox"], input[type="radio"] {
+        position: absolute;
+        z-index: -10;
+        opacity: 0;
+    }
+
+    label {
+        display: inline-block;
+        & when (@railExtendHorizontal < 0) {
+            padding-left: (@railWidth - 2 * @railExtendHorizontal) + @spacing;
+        }
+        & when (@railExtendHorizontal >= 0) {
+            padding-left: @railWidth + @spacing;
+        }
+    }
+
+    label:before, label:after {
+        content: "";
+        display: block;
+        position: absolute;
+    }
+
+    label:before {
+        width: @railWidth;
+        height: @railHeight;
+        & when (@railExtendHorizontal < 0) {
+            left: -@railExtendHorizontal;
+        }
+        & when (@railExtendHorizontal >= 0) {
+            left: 0;
+        }
+        & when (@railExtendVertical < 0) {
+            top: -@railExtendVertical;
+        }
+        & when (@railExtendVertical >= 0) {
+            top: 0;
+        }
+        border: @railBorder;
+        background: @railBackground;
+        border-radius: @railHeight/2;
+    }
+
+    label:after {
+        width: @buttonSize;
+        height: @buttonSize;
+        & when (@railExtendHorizontal < 0) {
+            left: 0;
+        }
+        & when (@railExtendHorizontal >= 0) {
+            left: @railExtendHorizontal;
+        }
+        & when (@railExtendVertical < 0) {
+            top: 0;
+        }
+        & when (@railExtendVertical >= 0) {
+            top: @railExtendVertical;
+        }
+        border-radius: 50%;
+        box-shadow: @buttonShadow;
+        background: @buttonInactiveBackground;
+        transition: left @animationDuration, background @transitionDuration;
+    }
+
+    :checked + label {
+        &:after {
+            background: @primaryColor;
+            & when (@railExtendHorizontal < 0) {
+                left: (@railWidth - 2 * @railExtendHorizontal) - @buttonSize;
+            }
+            & when (@railExtendHorizontal >= 0) {
+                left: @railWidth - @buttonSize - @railExtendHorizontal;
+            }
+        }
+    }
+}
