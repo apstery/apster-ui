@@ -1,0 +1,94 @@
+.checkbox, .radio {
+    position: relative;
+
+    input[type="checkbox"], input[type="radio"] {
+        position: absolute;
+        z-index: -10;
+        opacity: 0;
+    }
+
+    label {
+        display: inline-block;
+        padding-left: @size + @spacing;
+        min-height: @size;
+
+        &:before, &:after {
+            content: "";
+            display: block;
+            position: absolute;
+        }
+
+        &:before {
+            border: @border;
+            background: @background;
+            top: 0; left: 0;
+            width: @size;
+            height: @size;
+            transition: background-color @transitionDuration, border-color @transitionDuration;
+        }
+
+        &:after {
+            opacity: 0;
+            transition: opacity @transitionDuration;
+        }
+
+        &:empty {
+            width: @size;
+            padding-left: @size;
+        }
+    }
+
+    :checked + label {
+        &:before {
+            background: @checkedBackground;
+            border-color: @checkedBorderColor;
+        }
+
+        &:after {
+            opacity: 1;
+        }
+    }
+}
+
+.checkbox {
+    label {
+        &:before {
+            border-radius: @borderRadius;
+        }
+
+        &:after {
+            top: 0; left: 0;
+            width: @size;
+            height: @size;
+            background: @checkMarkBackground;
+        }
+    }
+
+    :indeterminate + label {
+        &:before {
+            background: @indeterminateBackground;
+            border-color: @indeterminateBorderColor;
+        }
+
+        &:after {
+            background: @indeterminateMarkBackground;
+        }
+    }
+}
+
+.radio {
+    label {
+        &:before {
+            border-radius: 50%;
+        }
+
+        &:after {
+            top: (@size - @radioBulletSize) / 2;
+            left: (@size - @radioBulletSize) / 2;
+            width: @radioBulletSize;
+            height: @radioBulletSize;
+            background: @radioBulletBackground;
+            border-radius: 50%;
+        }
+    }
+}
