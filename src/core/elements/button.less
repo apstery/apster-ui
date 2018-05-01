@@ -1,0 +1,88 @@
+.button {
+    display: inline-block;
+    height: @height;
+    line-height: @height;
+    border-radius: @borderRadius;
+    padding: 0 @padding;
+    font-weight: @fontWeight;
+
+    &:not(.ghost) {
+        background-color: #c0c0c0;
+        color: white;
+        transition: background-color @transitionDuration;
+
+        &:hover {
+            background-color: darken(#c0c0c0, 10%);
+        }
+        &:active {
+            background-color: darken(#c0c0c0, 15%);
+        }
+    }
+
+    &.ghost {
+        color: #c0c0c0;
+        box-shadow: inset 0 0 0 1px #c0c0c0;
+        background-color: transparent;
+        transition: color @transitionDuration, box-shadow @transitionDuration;
+
+        &:hover {
+            color: darken(#c0c0c0, 10%);
+            box-shadow: inset 0 0 0 1px darken(#c0c0c0, 10%);
+        }
+    }
+
+    &.primary {
+        &:not(.ghost) {
+            background-color: @primaryColor;
+
+            &:hover {
+                background-color: darken(@primaryColor, 10%);
+            }
+            &:active {
+                background-color: darken(@primaryColor, 15%);
+            }
+        }
+
+        &.ghost {
+            color: @primaryColor;
+            box-shadow: inset 0 0 0 1px @primaryColor;
+
+            &:hover {
+                color: darken(@primaryColor, 10%);
+                box-shadow: inset 0 0 0 1px darken(@primaryColor, 10%);
+            }
+        }
+    }
+
+    &.secondary {
+        &:not(.ghost) {
+            background-color: @secondaryColor;
+
+            &:hover {
+                background-color: darken(@secondaryColor, 10%);
+            }
+            &:active {
+                background-color: darken(@secondaryColor, 15%);
+            }
+        }
+
+        &.ghost {
+            color: @secondaryColor;
+            box-shadow: inset 0 0 0 1px @secondaryColor;
+
+            &:hover {
+                color: darken(@secondaryColor, 10%);
+                box-shadow: inset 0 0 0 1px darken(@secondaryColor, 10%);
+            }
+        }
+    }
+}
+button.button {
+    -webkit-appearance: none;
+    margin: 0;
+    border: none;
+    outline: none;
+}
+a.button {
+    text-decoration: none;
+}
