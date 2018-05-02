@@ -1,0 +1,71 @@
+input:not([type]),
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="text"],
+textarea {
+    -webkit-appearance: none;
+    margin: 0;
+    display: inline-block;
+    border: none;
+    padding: 0;
+    line-height: @lineHeight;
+    outline: none;
+    border-radius: @borderRadius;
+
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: @placeholderColor;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+        color: @placeholderColor;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+        color: @placeholderColor;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+        color: @placeholderColor;
+    }
+
+    &.success {
+        background-color: fade(@successColor, 5%);
+        color: @successColor;
+    }
+
+    &.error {
+        background-color: fade(@dangerColor, 5%);
+        color: @dangerColor;
+    }
+
+    &:not(.basic) {
+        padding: (@verticalPadding + @borderSize) (@horizontalPadding + @borderSize);
+
+        & when (@borderSize > 0) {
+            box-shadow: inset 0 0 0 @borderSize @borderColorIdle;
+            transition: box-shadow @transitionDuration;
+
+            &:focus {
+                box-shadow: inset 0 0 0 @borderSize @borderColorFocus;
+            }
+
+            &.success {
+                box-shadow: inset 0 0 0 @borderSize fade(@successColor, 25%);
+                &:focus {
+                    box-shadow: inset 0 0 0 @borderSize @successColor;
+                }
+            }
+
+            &.error {
+                box-shadow: inset 0 0 0 @borderSize fade(@dangerColor, 25%);
+                &:focus {
+                    box-shadow: inset 0 0 0 @borderSize @dangerColor;
+                }
+            }
+        }
+    }
+
+    &.fluid {
+        display: block;
+        width: 100%;
+    }
+}
+
