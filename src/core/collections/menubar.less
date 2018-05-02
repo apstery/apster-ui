@@ -1,0 +1,22 @@
+.menubar {
+    display: flex;
+
+    > .item {
+        padding: @verticalPadding @horizontalPadding;
+    }
+
+    > a.item {
+        text-decoration: none;
+        color: inherit;
+        transition: background-color @transitionDuration;
+
+        &:hover {
+            background: @hoverBackground;
+        }
+    }
+
+    > .divider {
+        width: 1px;
+        background-color: @dividerColor;
+    }
+}
