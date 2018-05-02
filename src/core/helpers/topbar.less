@@ -1,0 +1,31 @@
+.topbar {
+    position: fixed;
+    top: 0; right: 0; left: 0;
+    height: @smHeight;
+    transition: height @animationDuration;
+
+    > .container {
+        height: 100%;
+        position: relative;
+    }
+
+    &.scrolled {
+        height: @smHeightScrolled;
+    }
+
+    @media screen and (min-width: @breakPointSmToMd) {
+        height: @mdHeight;
+
+        &.scrolled {
+            height: @mdHeightScrolled;
+        }
+    }
+
+    @media screen and (min-width: @breakPointMdToLg) {
+        height: @lgHeight;
+
+        &.scrolled {
+            height: @lgHeightScrolled;
+        }
+    }
+}
