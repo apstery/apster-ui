@@ -1,8 +1,8 @@
-.menubar {
-    display: flex;
-    padding: 0 @spaceBeforeAfter;
+.menu {
+    padding: @spaceBeforeAfter 0;
 
     > .item {
+        display: block;
         padding: @verticalPadding @horizontalPadding;
     }
 
@@ -17,8 +17,12 @@
     }
 
     > .divider {
-        width: 1px;
+        height: 1px;
         background-color: @dividerColor;
-        margin: 0 @dividerSpace;
+        margin: @dividerSpace 0;
+    }
+
+    &.floating {
+        box-shadow: @floatingMenuBoxShadow
     }
 }

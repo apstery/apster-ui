@@ -2,15 +2,23 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Apster UI | Menu bar</title>
+    <title>Apster UI | Menu</title>
     <link rel="stylesheet/less" type="text/css" href="../../src/core/boilerplate.less" />
-    <link rel="stylesheet/less" type="text/css" href="menubar.test.less" />
+    <link rel="stylesheet/less" type="text/css" href="menu.test.less" />
     <script>var less = { env: 'development' };</script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.2/less.min.js"></script>
 
     <style>
+    body {
+        background-color: #f8f8f8;
+    }
     .segment {
         padding: 50px;
+    }
+
+    .menu {
+        background-color: white;
+        max-width: 200px;
     }
     </style>
 
@@ -18,10 +26,19 @@
 <body>
 
 <div class="segment">
-    <h1 style="margin-bottom: 0;">Menu bar</h1>
+    <h1 style="margin-bottom: 0;">Menu</h1>
     <p style="font-size: 0.75em; margin-top: 0;"><a href="../">Back to index</a></p>
 
-    <div class="menubar">
+    <div class="menu">
+        <div class="item">Item</div>
+        <a href="#" class="item">Item with a link</a>
+        <div class="divider"></div>
+        <div class="item">Another item</div>
+    </div>
+
+    <br/>
+
+    <div class="floating menu">
         <div class="item">Item</div>
         <a href="#" class="item">Item with a link</a>
         <div class="divider"></div>
